@@ -1,19 +1,34 @@
-using System;
+﻿using System.Security.Cryptography.X509Certificates;
 
-namespace ClockClass
+namespace CounterClass
 {
-  internal class Program
-  {
-    static void Main(string[] args)
+    internal class Program
     {
-      Clock clock = new Clock();
-      for (int i = 0; i < 120; i++)
-      {
-        clock.Ticks();
-        Console.WriteLine(clock.GetTime);
-        Thread.Sleep(1000);
-        Console.Clear();
-      }
+        static void PrintCounters(Counter[] counters)
+        {
+            foreach(Counter c in counters)
+            {
+                Console.WriteLine("{0} is {1}", c.Name, c.Ticks.ToString());
+            }
+        }
+        static void Main(string[] args)
+        {
+            Counter[] myCounters = new Counter[3];
+            myCounters[0] = new Counter("Counter 1");
+            myCounters[1] = new Counter("Counter 2");
+            myCounters[2] = myCounters[0];
+
+            for(int i = 0; i < 9; i++)
+            {
+                myCounters[0].Increment();
+            }
+            for(int i = 0; i < 14; i++)
+            {
+                myCounters[1].Increment();
+            }
+            PrintCounters(myCounters);
+            myCounters[2].Reset();
+            PrintCounters(myCounters);
+        }
     }
-  }
 }
