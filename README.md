@@ -1,3 +1,3 @@
 # COS20007
-tui save code nha mng code tui ngu
-please dont copy it because im actually dumb keke
+In case this helps me or someone in the future for references.
+Pass tasks ONLY
